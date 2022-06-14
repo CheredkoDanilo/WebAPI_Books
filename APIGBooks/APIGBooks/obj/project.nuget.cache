@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "yktdR0+1I5ilQDzO6sVm1zUlHBGCMTeZsVEZpqFGxUrDnzq1n3VUXzCzlkJ2A1DX5FUPTl4s6a6688qE53UwHg==",
+  "dgSpecHash": "fh1HkpQ2wvVHsKn1T77ZcE8f9BGuiy3JIA8DzkDnsZu58ehuMgVRiCMOivvVlVsF3lpkOm3QEhp9yetDBzLtdg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\chere\\Desktop\\APIGBooks\\APIGBooks\\APIGBooks.csproj",
+  "projectFilePath": "C:\\Users\\chere\\Documents\\GitHub\\WebAPI_Books\\APIGBooks\\APIGBooks\\APIGBooks.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\chere\\.nuget\\packages\\awssdk.core\\3.7.11.15\\awssdk.core.3.7.11.15.nupkg.sha512",
     "C:\\Users\\chere\\.nuget\\packages\\awssdk.dynamodbv2\\3.7.3.47\\awssdk.dynamodbv2.3.7.3.47.nupkg.sha512",
