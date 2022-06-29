@@ -3,7 +3,7 @@
     public class Books
     {
         public int totalItems { get; set; }
-        public List<Models> items { get; set; }
+        public List<Book> items { get; set; }
 
     }
 }

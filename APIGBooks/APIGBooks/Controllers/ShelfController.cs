@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-
-using APIGBooks.authorization;
+using APIGBooks.Client;
 
 namespace APIGBooks.Controllers
 {
@@ -8,24 +7,26 @@ namespace APIGBooks.Controllers
     [Route("[controller]/[action]")]
     public class ShelfController : Controller
     {
+        private readonly User _user;
+        public ShelfController(User user)
+        {
+            _user = user;
+        }
         [HttpGet(Name = "List shelf")]
         public List<string> ListShelf(string shealf)
         {
-            User ListShelf = new User();
-            return ListShelf.GetListShelfAsync(shealf).Result;
+            return _user.GetListShelfAsync(shealf).Result;
         }
 
-        [HttpGet(Name = "Add book shelf")]
-        public string AddBookShelf(string shealf, string id)
+        [HttpPost(Name = "Add book shelf")]
+        public string AddBookShelf(string shealf, [FromBody] string id)
         {
-            User AddBookShelf = new User();
-            return AddBookShelf.AddShelfAsync(shealf, id).Result;
+            return _user.AddShelfAsync(shealf, id).Result;
         }
-        [HttpGet(Name = "Delete book shelf")]
+        [HttpDelete(Name = "Delete book shelf")]
         public string DeleteBookShelf(string shealf, string id)
         {
-            User DeleteBookShelf = new User();
-            return DeleteBookShelf.DeleteShelfAsync(shealf, id).Result;
+            return _user.DeleteShelfAsync(shealf, id).Result;
         }
     }
 }

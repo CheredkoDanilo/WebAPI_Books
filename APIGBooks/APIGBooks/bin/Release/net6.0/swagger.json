@@ -1,0 +1,626 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "APIGBooks, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+    "version": "1.0"
+  },
+  "paths": {
+    "/GetAllDynamoDb": {
+      "get": {
+        "tags": [
+          "Books"
+        ],
+        "operationId": "GetAllDynamoDb",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/BookDb"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/GetDynamoDb": {
+      "get": {
+        "tags": [
+          "Books"
+        ],
+        "operationId": "GetDynamoDb",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "id",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/BookDb"
+            }
+          }
+        }
+      }
+    },
+    "/PostDynamoDb": {
+      "post": {
+        "tags": [
+          "Books"
+        ],
+        "operationId": "PostDynamoDb",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/Book"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/PutDynamoDb": {
+      "put": {
+        "tags": [
+          "Books"
+        ],
+        "operationId": "PutDynamoDb",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "id",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/DeleteDynamoDb": {
+      "delete": {
+        "tags": [
+          "Books"
+        ],
+        "operationId": "DeleteDynamoDb",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "id",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/Book": {
+      "get": {
+        "tags": [
+          "Books"
+        ],
+        "operationId": "Book",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "name",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Books"
+            }
+          }
+        }
+      }
+    },
+    "/AuthorBook": {
+      "get": {
+        "tags": [
+          "Books"
+        ],
+        "operationId": "AuthorBook",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "author",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Books"
+            }
+          }
+        }
+      }
+    },
+    "/BookId": {
+      "get": {
+        "tags": [
+          "Books"
+        ],
+        "operationId": "BookId",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "id",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/AudioBook"
+            }
+          }
+        }
+      }
+    },
+    "/Shelf/ListShelf": {
+      "get": {
+        "tags": [
+          "Shelf"
+        ],
+        "operationId": "List shelf",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "shealf",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Shelf/AddBookShelf": {
+      "post": {
+        "tags": [
+          "Shelf"
+        ],
+        "operationId": "Add book shelf",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "shealf",
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "/Shelf/DeleteBookShelf": {
+      "delete": {
+        "tags": [
+          "Shelf"
+        ],
+        "operationId": "Delete book shelf",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "shealf",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "id",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "/Authorizations": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "operationId": "Authorization",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "/Revoke": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "operationId": "Revoke",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "AudioBook": {
+      "type": "object",
+      "properties": {
+        "book": {
+          "$ref": "#/definitions/Book"
+        },
+        "youTube": {
+          "$ref": "#/definitions/YouTubeBook"
+        }
+      }
+    },
+    "Book": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "etag": {
+          "type": "string"
+        },
+        "volumeInfo": {
+          "$ref": "#/definitions/volumeInfo"
+        },
+        "saleInfo": {
+          "$ref": "#/definitions/saleInfo"
+        },
+        "accessInfo": {
+          "$ref": "#/definitions/accessInfo"
+        }
+      }
+    },
+    "BookDb": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "etag": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "authors": {
+          "type": "string"
+        },
+        "publishedDate": {
+          "type": "string"
+        },
+        "printedPageCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "categories": {
+          "type": "string"
+        },
+        "maturityRating": {
+          "type": "string"
+        },
+        "contentVersion": {
+          "type": "string"
+        },
+        "language": {
+          "type": "string"
+        },
+        "canonicalVolumeLink": {
+          "type": "string"
+        }
+      }
+    },
+    "Books": {
+      "type": "object",
+      "properties": {
+        "totalItems": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Book"
+          }
+        }
+      }
+    },
+    "YouTubeBook": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "type": "string"
+        },
+        "etag": {
+          "type": "string"
+        },
+        "pageInfo": {
+          "$ref": "#/definitions/pageInfo"
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/item"
+          }
+        }
+      }
+    },
+    "accessInfo": {
+      "type": "object",
+      "properties": {
+        "country": {
+          "type": "string"
+        },
+        "viewability": {
+          "type": "string"
+        },
+        "textToSpeechPermission": {
+          "type": "string"
+        },
+        "webReaderLink": {
+          "type": "string"
+        }
+      }
+    },
+    "id": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "type": "string"
+        },
+        "videoId": {
+          "type": "string"
+        }
+      }
+    },
+    "item": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "type": "string"
+        },
+        "etag": {
+          "type": "string"
+        },
+        "id": {
+          "$ref": "#/definitions/id"
+        },
+        "snippet": {
+          "$ref": "#/definitions/snippet"
+        }
+      }
+    },
+    "pageInfo": {
+      "type": "object",
+      "properties": {
+        "totalResults": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "resultsPerPage": {
+          "format": "int32",
+          "type": "integer"
+        }
+      }
+    },
+    "saleInfo": {
+      "type": "object",
+      "properties": {
+        "country": {
+          "type": "string"
+        },
+        "saleability": {
+          "type": "string"
+        },
+        "isEbook": {
+          "type": "boolean"
+        }
+      }
+    },
+    "snippet": {
+      "type": "object",
+      "properties": {
+        "publishedAt": {
+          "type": "string"
+        },
+        "channelId": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "channelTitle": {
+          "type": "string"
+        },
+        "liveBroadcastContent": {
+          "type": "string"
+        },
+        "publishTime": {
+          "type": "string"
+        }
+      }
+    },
+    "volumeInfo": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "authors": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "publisher": {
+          "type": "string"
+        },
+        "publishedDate": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "pageCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "printedPageCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "printType": {
+          "type": "string"
+        },
+        "categories": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "maturityRating": {
+          "type": "string"
+        },
+        "contentVersion": {
+          "type": "string"
+        },
+        "language": {
+          "type": "string"
+        },
+        "canonicalVolumeLink": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

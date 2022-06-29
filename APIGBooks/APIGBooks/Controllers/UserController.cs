@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using APIGBooks.authorization;
+using APIGBooks.Client;
 
 namespace APIGBooks.Controllers
 {
@@ -7,18 +7,21 @@ namespace APIGBooks.Controllers
     [ApiController]
     public class UserController : Controller
     {
+        private readonly User _user;
+        public UserController(User user)
+        {
+            _user = user;
+        }
         [HttpGet(Name = "Authorization")]
         public string Authorizations()
         {
-            User Authorizations = new User();
-            return Authorizations.AuthorizationAsync().Result;
+            return _user.AuthorizationAsync().Result;
         }
 
         [HttpGet(Name = "Revoke")]
         public string Revoke()
         {
-            User Revoke = new User();
-            return Revoke.RevokAsync().Result;
+            return _user.RevokAsync().Result;
         }
     }
 }
