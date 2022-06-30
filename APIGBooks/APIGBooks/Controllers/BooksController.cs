@@ -127,22 +127,26 @@ namespace APIGBooks.Controllers
         public async Task<AudioBook> BookId(string id)
         {
             var book = _client.GetBookIdAsync(id).Result.Book;
-            var bookDb = new BookDb
+            if (_dynamoDBClient.Get(id) == null)
             {
-                Id = book.Id,
-                kind = book.kind,
-                etag = book.etag,
-                title = book.volumeInfo.title,
-                authors = book.volumeInfo.authors[0],
-                categories = book.volumeInfo.categories[0],
-                contentVersion = book.volumeInfo.contentVersion,
-                canonicalVolumeLink = book.volumeInfo.canonicalVolumeLink,
-                printedPageCount = book.volumeInfo.printedPageCount,
-                publishedDate = book.volumeInfo.publishedDate,
-                language = book.volumeInfo.language,
-                maturityRating = book.volumeInfo.maturityRating
-            };
-            await _dynamoDBClient.Create(bookDb); 
+                var bookDb = new BookDb
+                {
+                    Id = book.Id,
+                    kind = book.kind,
+                    etag = book.etag,
+                    title = book.volumeInfo.title,
+                    authors = book.volumeInfo.authors[0],
+                    categories = book.volumeInfo.categories[0],
+                    contentVersion = book.volumeInfo.contentVersion,
+                    canonicalVolumeLink = book.volumeInfo.canonicalVolumeLink,
+                    printedPageCount = book.volumeInfo.printedPageCount,
+                    publishedDate = book.volumeInfo.publishedDate,
+                    language = book.volumeInfo.language,
+                    maturityRating = book.volumeInfo.maturityRating
+                };
+                await _dynamoDBClient.Create(bookDb);
+            }
+            
             return _client.GetBookIdAsync(id).Result;
         }
     }
